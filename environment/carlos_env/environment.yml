@@ -1,0 +1,26 @@
+name: rlkit
+channels:
+  - pytorch
+  - defaults
+  - nvidia
+dependencies:
+  - pytorch-cuda=11.6
+  - pytorch
+  - pip
+  - torchvision
+  - pip:
+    - boto3
+    - cloudpickle
+    - cython
+    - gtimer==1.0.0b5
+    - gym==0.13.0
+    - joblib==0.14.1
+    - matplotlib
+    - opencv-python
+    - python-dateutil
+    - python-utils
+    - tqdm
+    - pyyaml
+    - mujoco-py
+prefix: /home/carlos/miniconda3/envs/rlkit
+

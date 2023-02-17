@@ -4,7 +4,6 @@ from rlkit.torch.smac.base_config import DEFAULT_PEARL_CONFIG
 from rlkit.torch.smac.pearl_launcher import pearl_experiment
 from rlkit.util.io import load_local_or_remote_file
 
-
 # @click.command()
 # @click.option('--debug', is_flag=True, default=False)
 # @click.option('--dry', is_flag=True, default=False)
@@ -70,6 +69,6 @@ def main():
             use_gpu=gpu,
         )
 
+
 if __name__ == "__main__":
     main()
-

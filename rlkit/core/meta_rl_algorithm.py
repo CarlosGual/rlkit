@@ -2,6 +2,7 @@ import abc
 from collections import OrderedDict
 import time
 
+from tqdm import tqdm
 import gtimer as gt
 import numpy as np
 import torch
@@ -266,7 +267,7 @@ class MetaRLAlgorithm(metaclass=abc.ABCMeta):
             if it_ == 0 and self.num_initial_steps > 0:
                 print('collecting initial pool of data for train and eval')
                 # temp for evaluating
-                for task_idx in self.train_task_indices:
+                for task_idx in tqdm(self.train_task_indices):
                     if self.expl_data_collector:
                         init_expl_paths = self.expl_data_collector.collect_new_paths(
                             max_path_length=self.max_path_length,
@@ -281,6 +282,7 @@ class MetaRLAlgorithm(metaclass=abc.ABCMeta):
                     else:
                         self.collect_exploration_data(
                             self.num_initial_steps, 1, np.inf, task_idx)
+                    # print(f'Done for task id: {task_idx}')
             self.in_unsupervised_phase = (it_ >= self.num_iterations_with_reward_supervision)
             if it_ == self.num_iterations_with_reward_supervision:
                 self._transition_to_unsupervised()
@@ -293,8 +295,8 @@ class MetaRLAlgorithm(metaclass=abc.ABCMeta):
                                            and self.clear_encoder_buffer_before_every_update
                                    ) and not self.use_rl_buffer_for_enc_buffer
             # TODO: propogate unsupervised mode elegantly
-            # Sample data from train tasks.
-            for i in range(self.num_tasks_sample):
+            print('Sample data from train tasks')
+            for i in tqdm(range(self.num_tasks_sample)):
                 if len(self.exploration_task_indices) == 0:
                     # do no data collection
                     break
@@ -398,8 +400,8 @@ class MetaRLAlgorithm(metaclass=abc.ABCMeta):
                         )
             gt.stamp('sample')
 
-            # Sample train tasks and compute gradient updates on parameters.
-            for train_step in range(self.num_train_steps_per_itr):
+            print('Sample train tasks and compute gradient updates on parameters')
+            for train_step in tqdm(range(self.num_train_steps_per_itr)):
                 if self.use_meta_learning_buffer:
                     batch = self.meta_replay_buffer.sample_meta_batch(
                         rl_batch_size=self.batch_size,
