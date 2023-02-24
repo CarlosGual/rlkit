@@ -14,7 +14,7 @@ class SimpleReplayBuffer(ReplayBuffer):
         observation_dim,
         action_dim,
         env_info_sizes,
-        replace = True,
+        replace=True,
     ):
         self._observation_dim = observation_dim
         self._action_dim = action_dim
@@ -69,7 +69,7 @@ class SimpleReplayBuffer(ReplayBuffer):
             self._size += 1
 
     def random_batch(self, batch_size):
-        indices = np.random.choice(self._size, size=batch_size, replace=self._replace or self._size < batch_size)
+        indices = np.random.choice(np.shape(self._observations)[0], size=batch_size, replace=self._replace or self._size < batch_size)
         if not self._replace and self._size < batch_size:
             warnings.warn('Replace was set to false, but is temporarily set to true because batch size is larger than current size of replay.')
         batch = dict(
@@ -103,3 +103,27 @@ class SimpleReplayBuffer(ReplayBuffer):
         return OrderedDict([
             ('size', self._size)
         ])
+
+    def copy_data(self, other_buffer: 'SimpleReplayBuffer'):
+        start_i = self._top
+        end_i = self._top + other_buffer._top
+        if end_i > self._max_replay_buffer_size:
+            raise NotImplementedError()
+        self._observations[start_i:end_i] = (
+            other_buffer._observations[:other_buffer._top].copy()
+        )
+        self._actions[start_i:end_i] = (
+            other_buffer._actions[:other_buffer._top].copy()
+        )
+        self._rewards[start_i:end_i] = (
+            other_buffer._rewards[:other_buffer._top].copy()
+        )
+        self._terminals[start_i:end_i] = (
+            other_buffer._terminals[:other_buffer._top].copy()
+        )
+        self._next_obs[start_i:end_i] = (
+            other_buffer._next_obs[:other_buffer._top].copy()
+        )
+        # self._sparse_rewards[start_i:end_i] = (
+        #     other_buffer._sparse_rewards[:other_buffer._top].copy()
+        # )

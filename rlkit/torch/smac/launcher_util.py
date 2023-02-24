@@ -277,8 +277,8 @@ def load_buffer_onto_algo(
         pretrain_buffer_path,
         file_type='joblib',
     )
-    saved_replay_buffer = data['replay_buffer']
-    saved_enc_replay_buffer = data['enc_replay_buffer']
+    saved_replay_buffer = data['algorithm'].replay_buffer
+    saved_enc_replay_buffer = data['algorithm'].enc_replay_buffer
     if algo.use_meta_learning_buffer:
         for k in saved_replay_buffer.task_buffers:
             if k not in saved_replay_buffer.task_buffers:
@@ -303,8 +303,8 @@ def load_buffer_onto_algo(
                 continue
             rl_replay_buffer.task_buffers[k].copy_data(
                 saved_replay_buffer.task_buffers[k],
-                start_idx=start_idx,
-                end_idx=end_idx,
+                # start_idx=start_idx,
+                # end_idx=end_idx,
             )
         if algo.use_rl_buffer_for_enc_buffer:
             return
