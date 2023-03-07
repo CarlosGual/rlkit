@@ -63,7 +63,6 @@ def smac_experiment(
         use_next_obs_in_context=False,
         tags=None,
         online_trainer_kwargs=None,
-        seed=None
 ):
     if not skip_initial_data_collection_if_pretrained:
         raise NotImplementedError("deprecated! make sure to skip it!")

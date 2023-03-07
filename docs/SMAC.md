@@ -20,12 +20,3 @@ Finally, run the SMAC script
 ```bash
 python examples/smac/{ant|cheetah}.py
 ```
-
-To run on docker:
-
-```shell
-docker build -f Dockerfile -t <image_tag> . \ 
-&& docker run -v /home/carlos/repositorios/rlkit:/root/code \ 
---name rlkit_smac \
---runtime=nvidia 
-```

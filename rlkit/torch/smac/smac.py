@@ -306,7 +306,6 @@ class SmacTrainer(TorchTrainer):
         self.advantage_weighted_buffer_loss = advantage_weighted_buffer_loss
         self._debug_use_ground_truth_context = _debug_use_ground_truth_context
         self._num_gradient_steps = 0
-        torch.autograd.set_detect_anomaly(True)
 
     @property
     def train_reparam_weight(self):

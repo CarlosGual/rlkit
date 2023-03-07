@@ -36,7 +36,6 @@ def pearl_experiment(
         n_eval_tasks=0,
         use_next_obs_in_context=False,
         saved_tasks_path=None,
-        seed=None,
         tags=None,
 ):
     del tags

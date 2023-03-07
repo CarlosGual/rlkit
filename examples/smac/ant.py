@@ -34,14 +34,12 @@ def main():
     variant = DEFAULT_CONFIG.copy()
     variant["env_name"] = "ant-dir"
     variant["env_params"]["direction_in_degrees"] = True
-    variant['algo_kwargs']['num_iterations'] = 5
-    variant['algo_kwargs']["save_extra_manual_epoch_list"] = [0, 1, 50, 100, 200, 300, 400, 500]
     search_space = {
         'load_buffer_kwargs.pretrain_buffer_path': [
-            "data/02-17-dev--pearl-awac-smac--generate-ant-data--/02-17-dev--pearl-awac-smac--generate-ant-data--_2023_02_17_13_43_55_0000--s-0/extra_snapshot_itr500.cpkl"  # TODO: update to point to correct file
+            "results/.../extra_snapshot_itr100.cpkl"  # TODO: update to point to correct file
         ],
         'saved_tasks_path': [
-            "data/02-17-dev--pearl-awac-smac--generate-ant-data--/02-17-dev--pearl-awac-smac--generate-ant-data--_2023_02_17_13_43_55_0000--s-0/tasks_description",  # TODO: update to point to correct file
+            "examples/smac/ant_tasks.joblib",  # TODO: update to point to correct file
         ],
         'load_buffer_kwargs.start_idx': [
             -1200,
@@ -64,6 +62,8 @@ def main():
         )
 
     print(exp_name)
+
+
 
 
 if __name__ == "__main__":
