@@ -18,9 +18,9 @@ from rlkit.demos.source.hdf5_path_loader import HDF5PathLoader
 from rlkit.demos.source.mdp_path_loader import MDPPathLoader
 # from rlkit.visualization.video import save_paths, VideoSaveFunction
 
-from multiworld.core.flat_goal_env import FlatGoalEnv
-from multiworld.core.image_env import ImageEnv
-from multiworld.core.gym_to_multi_env import GymToMultiEnv
+# from multiworld.core.flat_goal_env import FlatGoalEnv
+# from multiworld.core.image_env import ImageEnv
+# from multiworld.core.gym_to_multi_env import GymToMultiEnv
 from rlkit.util.hyperparameter import recursive_dictionary_update
 
 import torch
