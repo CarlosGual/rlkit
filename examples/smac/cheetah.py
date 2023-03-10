@@ -38,10 +38,10 @@ def main():
     variant["env_name"] = "cheetah-vel"
     search_space = {
         'load_buffer_kwargs.pretrain_buffer_path': [
-            "results/.../extra_snapshot_itr100.cpkl"  # TODO: update to point to correct file
+            "data/03-07-dev--pearl-awac-smac--generate-cheetah-data--/03-07-dev--pearl-awac-smac--generate-cheetah-data--_2023_03_07_14_14_00_0000--s-46973/extra_snapshot_itr500.cpkl"  # TODO: update to point to correct file
         ],
         'saved_tasks_path': [
-            "examples/smac/cheetah_tasks.joblib",  # TODO: update to point to correct file
+            "data/03-07-dev--pearl-awac-smac--generate-cheetah-data--/03-07-dev--pearl-awac-smac--generate-cheetah-data--_2023_03_07_14_14_00_0000--s-46973/tasks_description",  # TODO: update to point to correct file
         ],
         'load_macaw_buffer_kwargs.rl_buffer_start_end_idxs': [
             [(0, 1200)],
