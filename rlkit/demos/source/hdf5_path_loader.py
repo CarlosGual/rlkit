@@ -54,7 +54,7 @@ class HDF5PathLoader:
             replay_buffer,
             demo_train_buffer,
             demo_test_buffer,
-            demo_paths=[], # list of dicts
+            demo_paths=[],  # list of dicts
             demo_train_split=0.9,
             demo_data_split=1,
             add_demos_to_replay_buffer=True,

@@ -101,4 +101,4 @@ RUN pip install tqdm
 RUN pip install mujoco-py==1.50.1.0
 RUN pip install git+https://github.com/Farama-Foundation/d4rl@master#egg=d4rl
 
-CMD ["python", "tests/regression/iql/test_iql_offline.py"]
+CMD ["python", "examples/smac/generate_ant_data.py"]

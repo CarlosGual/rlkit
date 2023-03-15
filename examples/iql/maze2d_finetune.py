@@ -25,7 +25,7 @@ variant = dict(
         min_num_steps_before_training=1000,
     ),
     max_path_length=1000,
-    replay_buffer_size=int(2E6),
+    replay_buffer_size=int(4E6),
     layer_size=256,
     policy_class=GaussianPolicy,
     policy_kwargs=dict(
@@ -72,7 +72,7 @@ variant = dict(
     load_env_dataset_demos=True,
 
     normalize_env=False,
-    env_id='antmaze-large-diverse-v0',
+    env_id='maze2d-large-v1',
 
     seed=random.randint(0, 100000),
 )
@@ -80,10 +80,9 @@ variant = dict(
 def main():
     run_experiment(experiment,
         variant=variant,
-        exp_prefix='iql-antmaze-large-diverse-v0',
+        exp_prefix='iql-maze2d-large-v1',
         mode="here_no_doodad",
-        unpack_variant=False,
-        use_gpu=True
+        unpack_variant=False
     )
 
 if __name__ == "__main__":
