@@ -2,7 +2,7 @@
 # on hosts with GPUs.
 # The image below is a pinned version of nvidia/cuda:9.1-cudnn7-devel-ubuntu16.04 (from Jan 2018)
 # If updating the base image, be sure to test on GPU since it has broken in the past.
-FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu18.04 AS rlkit_smac
+FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu18.04 AS rlkit_iql
 
 
 RUN apt-get update -q \
@@ -101,4 +101,4 @@ RUN pip install tqdm
 RUN pip install mujoco-py==1.50.1.0
 RUN pip install git+https://github.com/Farama-Foundation/d4rl@master#egg=d4rl
 
-CMD ["python", "examples/smac/generate_ant_data.py"]
+CMD ["python", "examples/iql/mujoco_finetune.py"]
